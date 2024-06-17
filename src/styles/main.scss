@@ -2,6 +2,7 @@
 
 $mainBgColor: #171717;
 $mainFontColor: #ffffff;
+$mainGradient: linear-gradient(to right, #8e2de2, #4a00e0);
 
 :root {
   font-size: calc(15px + 0.390625vw);
@@ -20,9 +21,32 @@ body {
   position: relative;
 }
 
+@mixin gradient-underline($time) {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    margin: auto;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: $mainGradient;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    transition: width $time ease-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
 a {
   text-decoration: none;
   color: $mainFontColor;
+  @include gradient-underline(200ms);
 }
 
 #app-header {
