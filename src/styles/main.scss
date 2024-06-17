@@ -17,4 +17,19 @@ $mainFontColor: #ffffff;
 body {
   background: $mainBgColor;
   color: $mainFontColor;
+  position: relative;
+}
+
+h1 {
+  font-weight: 200;
+  text-align: center;
+  position: absolute;
+  top: 0.3em;
+  left: 50%;
+  transform: translateX(-50%);
+
+  strong {
+    font-weight: 900;
+    text-transform: uppercase;
+  }
 }
