@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 
-$mainBgColor: #171717;
-$mainFontColor: #ffffff;
+$pageBgColor: #101720;
+$mainFontColor: #e9dfdf;
 $mainGradient: linear-gradient(to right, #8e2de2, #4a00e0);
+$mainBgColor: #020d19;
+$mainRadius: 1.25rem;
+$shadowColor: #041425;
 
 :root {
   font-size: calc(15px + 0.390625vw);
@@ -16,9 +19,13 @@ $mainGradient: linear-gradient(to right, #8e2de2, #4a00e0);
 }
 
 body {
-  background: $mainBgColor;
+  background: $pageBgColor;
   color: $mainFontColor;
   position: relative;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin gradient-underline($time) {
@@ -69,4 +76,26 @@ a {
     font-weight: 200;
     font-size: 0.75rem;
   }
+}
+
+main {
+  width: clamp(310px, 60vw, 1200px);
+  height: 45vh;
+  background: $mainBgColor;
+  border-radius: $mainRadius;
+  display: flex;
+  box-shadow: 4px 4px 16px -9px $shadowColor;
+}
+
+.general-data,
+.details-data {
+  padding: 0.75rem;
+}
+
+.general-data {
+  width: 35%;
+}
+
+.details-data {
+  width: 65%;
 }
