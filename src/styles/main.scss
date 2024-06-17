@@ -2,7 +2,7 @@
 
 $pageBgColor: #101720;
 $mainFontColor: #e9dfdf;
-$mainGradient: linear-gradient(to right, #8e2de2, #4a00e0);
+$mainGradient: linear-gradient(135deg, #8e2de2, #4a00e0);
 $mainBgColor: #020d19;
 $mainRadius: 1.25rem;
 $shadowColor: #041425;
@@ -89,7 +89,7 @@ main {
 
 .general-data,
 .details-data {
-  padding: 0.75rem;
+  padding: 0.9rem;
 }
 
 .general-data {
@@ -99,3 +99,5 @@ main {
 .details-data {
   width: 65%;
 }
+
+@import "general-data";
