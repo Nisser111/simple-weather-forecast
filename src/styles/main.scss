@@ -96,8 +96,13 @@ main {
   width: 35%;
 }
 
+@import "general-data";
+
 .details-data {
   width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-@import "general-data";
+@import "forecast-statistics";

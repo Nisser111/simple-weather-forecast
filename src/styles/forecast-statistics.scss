@@ -1,0 +1,15 @@
+.forecast-statistics {
+    li {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.1em 0;
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__name::first-letter {
+        text-transform: uppercase;
+    }
+}
