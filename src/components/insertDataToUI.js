@@ -118,7 +118,12 @@ const fiveDatForecast = (data) => {
 const insertDataToUI = (data) => {
     generalData(data[0]);
     forecastStatistics(data[0])
-    fiveDatForecast(data)
+    fiveDatForecast(data);
 }
 
-export { insertDataToUI }
+const reloadData = (data, index) => {
+    generalData(data[index]);
+    forecastStatistics(data[index])
+}
+
+export { insertDataToUI, reloadData }

@@ -34,7 +34,7 @@ class WeatherAPI {
             const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
             const monthName = date.toLocaleDateString('en-US', { month: 'long' });
             const dayNumber = date.toLocaleDateString('en-US', { day: 'numeric' });
-            const daySuffix = this.getDaySuffix(dayNumber);
+            const daySuffix = this.#getDaySuffix(dayNumber);
             const formattedDate = `${monthName} ${dayNumber}${daySuffix}`;
 
             if (!groupedData[dayKey]) {
@@ -71,7 +71,7 @@ class WeatherAPI {
         });
     }
 
-    getDaySuffix(day) {
+    #getDaySuffix(day) {
         if (day > 3 && day < 21) return 'th';
         switch (day % 10) {
             case 1: return 'st';
