@@ -71,7 +71,7 @@ const forecastStatistics = (data) => {
     predictibilityNode.innerText = Math.round(data.rain) + "%"
     huminidityNode.innerText = Math.round(data.humidity) + "%"
     windNode.innerText = Math.round(data.windSpeed) + " km/h"
-    airPressureNode.innerText = data.pressure + " mb"
+    airPressureNode.innerText = Math.round(data.pressure) + " mb"
     maxTempeNode.innerText = parseInt(data.maxTemp) + "°C";
     minTempNode.innerText = parseInt(data.minTemp) + "°C";
 }
@@ -112,7 +112,7 @@ const fiveDatForecast = (data) => {
     }
 
     const todayElement = document.querySelector(`.${prefix}day`);
-    todayElement.classList.add("current")
+    todayElement.classList.add("current");
 }
 
 const insertDataToUI = (data) => {
