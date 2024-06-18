@@ -1,0 +1,46 @@
+.five-day-forecast {
+  $padding: 0.3rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  background: #02111f;
+  padding: $padding;
+  border-radius: calc($mainRadius / 2 + $padding);
+
+  &__day {
+    position: relative;
+    z-index: 1;
+    width: 17.5%;
+    padding: 0.4em;
+    border-radius: calc($mainRadius / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background 200ms ease;
+  }
+
+  &__day:hover {
+    cursor: pointer;
+    background: $mainBgColor;
+  }
+
+  &__day.current {
+    background: $mainBgColor;
+  }
+
+  &__img {
+    height: 30%;
+  }
+
+  &__name-of-day {
+    margin-top: 0.7em;
+    font-size: 0.75em;
+  }
+
+  &__temp {
+    margin-top: 0.3em;
+    font-weight: 600;
+    font-size: 0.85em;
+  }
+}
