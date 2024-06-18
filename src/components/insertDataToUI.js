@@ -59,9 +59,26 @@ const generalData = (data) => {
     descriptionNode.innerText = data.weatherDescription;
 }
 
+const forecastStatistics = (data) => {
+    const prefix = '.forecast-statistics__';
+    const predictibilityNode = document.querySelector(`${prefix}predictibility`);
+    const huminidityNode = document.querySelector(`${prefix}huminidity`);
+    const windNode = document.querySelector(`${prefix}wind`);
+    const airPressureNode = document.querySelector(`${prefix}air-pressure`);
+    const maxTempeNode = document.querySelector(`${prefix}max-temp`);
+    const minTempNode = document.querySelector(`${prefix}min-temp`);
+
+    predictibilityNode.innerText = Math.round(data.rain) + "%"
+    huminidityNode.innerText = Math.round(data.humidity) + "%"
+    windNode.innerText = Math.round(data.windSpeed) + " km/h"
+    airPressureNode.innerText = data.pressure + " mb"
+    maxTempeNode.innerText = parseInt(data.maxTemp) + "°C";
+    minTempNode.innerText = parseInt(data.minTemp) + "°C";
+}
 
 const insertDataToUI = (data) => {
     generalData(data[0]);
+    forecastStatistics(data[0])
 }
 
 export { insertDataToUI }
