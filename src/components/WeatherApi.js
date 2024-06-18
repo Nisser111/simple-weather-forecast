@@ -1,8 +1,15 @@
+/**
+ * Class representing a WeatherAPI for fetching and formatting weather data.
+ */
 class WeatherAPI {
     #apiKey = "c5b66c41e5d182bdfda14a673512c0af";
     #apiUrl = "https://api.openweathermap.org/data/2.5/forecast";
     city = "warsaw";
 
+    /**
+     * Asynchronously fetches weather data from the API.
+     * @returns {Promise} A promise that resolves to the formatted weather data.
+     */
     async getData() {
         try {
             const response = await fetch(`${this.#apiUrl}?q=${this.city}&appid=${this.#apiKey}&units=metric`);
@@ -18,10 +25,19 @@ class WeatherAPI {
         }
     }
 
+    /**
+     * Sets a new city for weather data retrieval.
+     * @param {string} newCity - The new city to set.
+     */
     setCity(newCity) {
         this.city = newCity;
     }
 
+    /**
+     * Formats the raw weather data into a structured format.
+     * @param {Object} data - The raw weather data to format.
+     * @returns {Array} An array of formatted weather data objects.
+     */
     formatData(data) {
         const today = new Date().toISOString().split('T')[0];
         const forecastLocation = data.city.name;
@@ -71,6 +87,11 @@ class WeatherAPI {
         });
     }
 
+    /**
+     * Private method to get the suffix for a day number.
+     * @param {number} day - The day number to get the suffix for.
+     * @returns {string} The suffix for the day number.
+     */
     #getDaySuffix(day) {
         if (day > 3 && day < 21) return 'th';
         switch (day % 10) {

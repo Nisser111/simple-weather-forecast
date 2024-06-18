@@ -17,6 +17,10 @@ import _13n from '../assets/weather-icons/13n.svg';
 import _50d from '../assets/weather-icons/50d.svg';
 import _50n from '../assets/weather-icons/50n.svg';
 
+/**
+ * Represents a WeatherUI class for managing weather data and updating the UI.
+ * @param {Array} data - The weather data to be displayed.
+ */
 class WeatherUI {
     constructor(data) {
         this.weatherIcons = {
@@ -25,6 +29,10 @@ class WeatherUI {
         this.data = data;
     }
 
+    /**
+     * Updates the general weather data in the UI.
+     * @param {Object} data - The general weather data to be displayed.
+     */
     #generalData(data) {
         const prefix = '.general-data__';
         const nameOfDayNode = document.querySelector(`${prefix}name-of-day`);
@@ -45,6 +53,10 @@ class WeatherUI {
         descriptionNode.innerText = data.weatherDescription;
     }
 
+    /**
+     * Updates the forecast statistics in the UI.
+     * @param {Object} data - The forecast statistics data to be displayed.
+     */
     #forecastStatistics(data) {
         const prefix = '.forecast-statistics__';
         const predictibilityNode = document.querySelector(`${prefix}predictibility`);
@@ -62,6 +74,14 @@ class WeatherUI {
         minTempNode.innerText = parseInt(data.minTemp) + "°C";
     }
 
+    /**
+     * Creates a DOM node for a single day forecast.
+     * @param {string} image - The weather icon image key.
+     * @param {string} description - The weather description.
+     * @param {string} nameOfDay - The name of the day.
+     * @param {string} temperature - The temperature for the day.
+     * @returns {HTMLElement} - The DOM node for the forecast.
+     */
     #getOneDayForecastNode(image, description, nameOfDay, temperature) {
         const li = document.createElement("li");
         li.classList.add("five-day-forecast__day");
@@ -85,6 +105,10 @@ class WeatherUI {
         return li;
     }
 
+    /**
+     * Updates the five-day forecast in the UI.
+     * @param {Array} data - The five-day forecast data to be displayed.
+     */
     #fiveDayForecast(data) {
         const prefix = "five-day-forecast__";
         const container = document.querySelector(".five-day-forecast");
@@ -101,12 +125,19 @@ class WeatherUI {
         todayElement.classList.add("current")
     }
 
+    /**
+     * Inserts weather data into the UI.
+     */
     insertDataToUI() {
         this.#generalData(this.data[0]);
         this.#forecastStatistics(this.data[0]);
         this.#fiveDayForecast(this.data);
     }
 
+    /**
+     * Reloads weather data for a specific index in the UI.
+     * @param {number} index - The index of the data to reload.
+     */
     reloadData(index) {
         this.#generalData(this.data[index]);
         this.#forecastStatistics(this.data[index]);
