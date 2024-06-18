@@ -106,11 +106,26 @@ class WeatherUI {
     }
 
     /**
+     * Sets the default selected item in the five-day forecast UI based on the stored session data.
+     */
+    #setDefaultItem() {
+        const prefix = "five-day-forecast__";
+        const previousSelectedItemIndex = parseInt(sessionStorage.getItem("weatherForecastItem"));
+
+        if (previousSelectedItemIndex) {
+            const elements = Array.from(document.querySelectorAll(`.${prefix}day`));
+            elements[previousSelectedItemIndex].classList.add("current");
+        } else {
+            const todayElement = document.querySelector(`.${prefix}day`);
+            todayElement.classList.add("current");
+        }
+    }
+
+    /**
      * Updates the five-day forecast in the UI.
      * @param {Array} data - The five-day forecast data to be displayed.
      */
     #fiveDayForecast(data) {
-        const prefix = "five-day-forecast__";
         const container = document.querySelector(".five-day-forecast");
         for (let i = 0; i < 5; i++) {
             const day = data[i];
@@ -121,8 +136,7 @@ class WeatherUI {
             container.appendChild(item);
         }
 
-        const todayElement = document.querySelector(`.${prefix}day`);
-        todayElement.classList.add("current")
+        this.#setDefaultItem()
     }
 
     /**

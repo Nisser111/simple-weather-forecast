@@ -7,7 +7,9 @@ const handleReloadForecast = (weatherUIHandler) => {
 
     fiveDayForecastList.forEach((item, index) => {
         item.addEventListener("click", () => {
-            weatherUIHandler.reloadData(index)
+            weatherUIHandler.reloadData(index);
+            // Set selected index to session storage
+            sessionStorage.setItem("weatherForecastItem", index);
         })
     })
 }
