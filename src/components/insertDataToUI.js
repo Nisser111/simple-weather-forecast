@@ -76,9 +76,49 @@ const forecastStatistics = (data) => {
     minTempNode.innerText = parseInt(data.minTemp) + "°C";
 }
 
+const getOneDayForecastNode = (image, description, nameOfDay, temperature) => {
+    const li = document.createElement("li");
+    li.classList.add("five-day-forecast__day");
+
+    const img = document.createElement("img");
+    img.classList.add("five-day-forecast__img")
+    img.src = weatherIcons[image];
+    img.alt = description;
+    li.appendChild(img);
+
+    const nameOfDatParagraph = document.createElement("p");
+    nameOfDatParagraph.classList.add('five-day-forecast__name-of-day');
+    nameOfDatParagraph.innerText = nameOfDay.slice(0, 3)
+    li.appendChild(nameOfDatParagraph)
+
+    const tempParagraph = document.createElement("p");
+    tempParagraph.classList.add('five-day-forecast__temp');
+    tempParagraph.innerText = parseInt(temperature) + "°C";
+    li.appendChild(tempParagraph);
+
+    return li;
+}
+
+const fiveDatForecast = (data) => {
+    const prefix = "five-day-forecast__";
+    const container = document.querySelector(".five-day-forecast");
+    for (let i = 0; i < 5; i++) {
+        const day = data[i];
+
+        const { dayName, weatherIcon, weatherDescription, temperature } = day;
+        const iconKey = `_${weatherIcon}`;
+        const item = getOneDayForecastNode(iconKey, weatherDescription, dayName, temperature)
+        container.appendChild(item);
+    }
+
+    const todayElement = document.querySelector(`.${prefix}day`);
+    todayElement.classList.add("current")
+}
+
 const insertDataToUI = (data) => {
     generalData(data[0]);
     forecastStatistics(data[0])
+    fiveDatForecast(data)
 }
 
 export { insertDataToUI }
