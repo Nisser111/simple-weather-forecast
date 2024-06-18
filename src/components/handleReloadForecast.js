@@ -1,11 +1,11 @@
-import { reloadData } from "./insertDataToUI";
+import { reloadData } from "./WeatherUI";
 
-const handleReloadForecast = (data) => {
+const handleReloadForecast = (weatherUIHandler) => {
     const fiveDayForecastList = Array.from(document.querySelectorAll(".five-day-forecast__day"));
 
     fiveDayForecastList.forEach((item, index) => {
         item.addEventListener("click", () => {
-            reloadData(data, index)
+            weatherUIHandler.reloadData(index)
         })
     })
 }
